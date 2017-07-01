@@ -1,0 +1,19 @@
+{
+ "name": "compsci-101-visualised",
+ "version": "1.0.0",
+ "description": "Visualisations for popular algorithms and data structures",
+ "main": "index.js",
+ "repository": "git@github.com:mmckeaveney/compsci-101-visualised.git",
+ "author": "mmckeaveney <martinmckeaveney@gmail.com>",
+ "scripts": {
+  "start": "light-server -s . -p 7000",
+  "build": "rollup -c",
+  "dev": "rollup -c -w"
+ },
+ "license": "MIT",
+ "dependencies": {},
+ "devDependencies": {
+  "rollup": "^0.43.0",
+  "rollup-watch": "^4.0.0"
+ }
+}

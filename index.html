@@ -1,23 +1,40 @@
-<htmL>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<style>
+		<meta charset="utf-8">
+		<title>Compsci Animations</title>
+		<style type="text/css">
 		.container {
-			display: flex;
-			flex-direction: row; 
 		}
-		.container div {
-			background-color: papayawhip;
-		}
+
 		.bar {
-			fill: teal; 
+			position:absolute;
+			width: 100px;
+			height: 0;
+			background-color: papayawhip;
+			text-align: center;
+			font-family: Roboto;
+			padding: 10px;
+			margin-right: 5px;
+			-webkit-transition: all 1.5s ease-in-out;
+      -moz-transition: all 1.5s ease-in-out;
+      -o-transition: all 1.5s ease-in-out;
+      transition: all 1.5s ease-in-out;
 		}
 		</style>
 	</head>
 	<body>
+	
+		<button class="insert">INSERT</button>
+		<input class="insertinput"></input>
+		<button class="delete">DELETE</button>
+		<input class="deleteinput"></input>
+		<button class="search">SEARCH</button>
+		<input class="searchinput"></input>
+
 		<div class="container">
 		</div>
-		<button class="but"> CLICK </button>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-		<script src="viz.js"> </script>
+			
+				<script type="text/javascript" src="unorderedArray.js"> </script>
 	</body>
 </html>
