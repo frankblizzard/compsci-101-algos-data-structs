@@ -1,115 +1,52 @@
+function unorderedArray() {
+	this.memory = [];
+	this.length = 0;
+	this.computations = 0;
 
-const dataset = [];
+	return {
 
-// Dimensions
-const width = 1000;
-const height = 200;
-const barWidth = 100; 
-const padding = 25;
-const barWithPadding = barWidth + padding;
+		// O(1)
+		insertion: (element) => { 
+			this.memory[this.length] = element;
+			this.length++;
+			this.computations++;
+		},
 
-// Colors
-const BASE_COLOR = "papayawhip";
-const SEARCHING_COLOR = "purple";
-const FOUND_COLOR = "green";
-const DELETED_COLOR = "red";
+		// O(N)
+		deletion: (deletionTarget) => {
+			for (let i = 0; i < this.length; i++) {
+				this.computations ++;
+				if (this.memory[i] === deletionTarget) {
+					delete this.memory[i];
+					this.length--;
+					return; 
+				}
+			}
+			return -1;
+		},
 
-// Timing
-const BAR_ANIMATION_TIME = 1000;
+		// O(N)
+		linearSearch: (searchTarget) => { 
+			for (let i = 0; i < this.length; i++) {
+				this.computations ++;
+				if (this.memory[i] === searchTarget) {
+					return i;
+				}				
+			}
 
+			return -1;
+		},
 
-const insertion = (num) => { 
-	const bar = document.createElement("div"); 
-	bar.classList.add("bar");
-	const barHeight = num * 10;
-	bar.style.height = barHeight + "px";
-	bar.style.width = `${barWidth}px` 
-	bar.innerText = num;
-	bar.style.fontFamily = "sans-serif";
-	bar.style.fontSize = "20px";
-	bar.style.opacity = 1;
-	bar.dataset.data = num;
+		// O(1)
+		access: (address) => this.memory[address],
 
-	const leftValue = (barWithPadding * dataset.length); 	
-	bar.style.left = leftValue + "px";
-	bar.style.top = (height - barHeight) + "px";
+		length: () => this.length,
 
-	dataset.push(bar);
+		computations: () => this.computations,
 
-	document.querySelector(".container").appendChild(bar);
-}
+		memory: () => this.memory
+	};
 
-// prop :: Object -> String -> a
-const prop = (obj) => (key) => obj[key];
-
-const deletion = (idx) => {
-	const elementToDelete = dataset[idx];
-
-	elementToDelete.style.backgroundColor = DELETED_COLOR;
-	elementToDelete.style.top = "300px";
-	elementToDelete.style.opacity = "0";
-	dataset.splice(idx, 1);
-	setTimeout(() => {
-		dataset[idx].parentNode.removeChild(elementToDelete);
-	}, 4000);
-
-	let i = idx;
-	const animateBars = setInterval(() => {
-		if (i === dataset.length - 1) {
-			clearInterval(animateBars);
-		}
-		const nextBar = dataset[i];
-		nextBar.style.left = `${parseInt(nextBar.style.left) - barWithPadding}px`;
-		i++;
-	}, BAR_ANIMATION_TIME);
-
-}
-
-const linearSearch = (elementToFind) => { 
-
-	let i = 0;
-	const animateBars = setInterval(() => {
-		const el = dataset[i];
-
-		if (i === dataset.length - 1) {
-			clearInterval(animateBars);
-		}
-
-		el.style.backgroundColor = SEARCHING_COLOR;
-
-		if (el.dataset.data === elementToFind.toString()) {
-			el.style.backgroundColor = FOUND_COLOR;
-			clearInterval(animateBars);
-		}
-
-		i++;
-	}, BAR_ANIMATION_TIME);
-}
-
-const reset = () => { 
-	dataset.forEach((bar) => bar.style.backgroundColor = BASE_COLOR);
-}
-
-
-// Event listeners
-document.querySelector(".insert").addEventListener("click", () => {
-	insertion(document.querySelector(".insertinput").value);
-});
-
-document.querySelector(".delete").addEventListener("click", () => {
-	reset();
-	deletion(parseInt(document.querySelector(".deleteinput").value));
-});
-
-document.querySelector(".search").addEventListener("click", () => {
-	reset();
-	linearSearch(document.querySelector(".searchinput").value);
-});
-
-[1, 2, 3, 4, 5].forEach(insertion);
-
-export default {
-	insertion,
-	deletion,
-	linearSearch
 };
+
+export default unorderedArray;
