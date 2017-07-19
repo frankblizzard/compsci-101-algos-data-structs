@@ -3,6 +3,8 @@ function orderedArray() {
     memory: [],
     length: 0,
     computations: 0,
+
+    // O(N)
     insertion(value) {
       let i;
 
@@ -19,6 +21,7 @@ function orderedArray() {
       this.length++;
       this.memory[i + 1] = value;
     },
+    // O(log N)
     binarySearch(target, values = this.memory) {
       const middle = Math.floor(values.length / 2);
 

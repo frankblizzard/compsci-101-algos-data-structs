@@ -1,18 +1,17 @@
 function unorderedArray() {
-  this.memory = [];
-  this.length = 0;
-  this.computations = 0;
-
   return {
+    memory: [],
+    length: 0,
+    computations: 0,
     // O(1)
-    insertion: element => {
+    insertion(element) {
       this.memory[this.length] = element;
       this.length++;
       this.computations++;
     },
 
     // O(N)
-    deletion: deletionTarget => {
+    deletion(deletionTarget) {
       for (let i = 0; i < this.length; i++) {
         this.computations++;
         if (this.memory[i] === deletionTarget) {
@@ -25,10 +24,10 @@ function unorderedArray() {
     },
 
     // O(N)
-    linearSearch: searchTarget => {
+    linearSearch(target) {
       for (let i = 0; i < this.length; i++) {
         this.computations++;
-        if (this.memory[i] === searchTarget) {
+        if (this.memory[i] === target) {
           return i;
         }
       }
@@ -37,13 +36,7 @@ function unorderedArray() {
     },
 
     // O(1)
-    access: address => this.memory[address],
-
-    length: () => this.length,
-
-    computations: () => this.computations,
-
-    memory: () => this.memory
+    access(address) { return this.memory[address] },
   };
 }
 

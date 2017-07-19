@@ -11,8 +11,8 @@ describe("Unordered Array Tests ", () => {
     array.insertion(5);
 
     expect(array.access(0)).toEqual(5);
-    expect(array.length()).toEqual(1);
-    expect(array.computations()).toEqual(1);
+    expect(array.length).toEqual(1);
+    expect(array.computations).toEqual(1);
   });
 
   it("Should find an element with a linear search with O(N)", () => {
@@ -22,10 +22,10 @@ describe("Unordered Array Tests ", () => {
     array.insertion(4);
 
     const found = array.linearSearch(4);
-    const foundIndex = array.memory().indexOf(4);
+    const foundIndex = array.memory.indexOf(4);
 
     expect(found).toEqual(foundIndex);
-    expect(array.computations()).toBeGreaterThan(array.length());
+    expect(array.computations).toBeGreaterThan(array.length);
   });
 
   it("Should delete the specified element with O(N)", () => {
@@ -36,8 +36,8 @@ describe("Unordered Array Tests ", () => {
 
     array.deletion(4);
 
-    expect(array.length()).toEqual(3);
-    expect(array.computations()).toBeGreaterThan(array.length());
-    expect(array.memory().indexOf(4)).toEqual(-1);
+    expect(array.length).toEqual(3);
+    expect(array.computations).toBeGreaterThan(array.length);
+    expect(array.memory.indexOf(4)).toEqual(-1);
   });
 });
