@@ -16,7 +16,6 @@
   "format": "prettier --tab-width 2 --write '{src,__tests__}/**/*.js'"
  },
  "license": "MIT",
- "dependencies": {},
  "devDependencies": {
   "babel-jest": "^20.0.3",
   "babel-preset-es2015": "^6.24.1",
