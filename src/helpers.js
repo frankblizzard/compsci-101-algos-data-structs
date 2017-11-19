@@ -11,9 +11,15 @@ const median = values => {
   }
 };
 
-export { compose, median };
+const swap = (idx1, idx2, arr) => {
+  const temp = arr[idx1];
+  arr[idx1] = arr[idx2];
+  arr[idx2] = temp;
+}
 
-export default {
-  compose,
-  median
-};
+function shiftElementRight(idx, arr) {
+  arr[idx + 1] = arr[idx];
+}
+
+
+export { compose, median, swap, shiftElementRight };
