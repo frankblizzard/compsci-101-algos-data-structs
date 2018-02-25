@@ -1,6 +1,6 @@
 import { swap } from "helpers";
 
-function findLowestIndex(idx, arr) {
+function findIndexOfLowestValue(idx, arr) {
   let lowest;
 
   for (var i = idx; i < arr.length - 1; i++) {
@@ -15,7 +15,7 @@ function selectionSort(arr) {
   // We only need to iterate until one before the end.
   // Once we have reached the last index, the list should be sorted.
   for (let i = 0; i < arr.length - 1; i++) {
-    const lowestIdx = findLowestIndex(i, arr);
+    const lowestIdx = findIndexOfLowestValue(i, arr);
     swap(i, lowestIdx, arr);
   }
 

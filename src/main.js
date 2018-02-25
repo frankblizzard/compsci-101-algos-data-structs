@@ -1,11 +1,11 @@
-import unorderedArray from "./unorderedArray";
-import orderedArray from "./orderedArray";
-import queue from "./queue";
-import stack from "./stack";
+import UnorderedArray from "./unorderedArray";
+import OrderedArray from "./orderedArray";
+import Queue from "./queue";
+import Stack from "./stack";
 
 export default {
-  unorderedArray,
-  orderedArray,
-  queue,
-  stack
+  UnorderedArray,
+  OrderedArray,
+  Queue,
+  Stack
 };
