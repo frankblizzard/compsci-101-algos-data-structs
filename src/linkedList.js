@@ -72,7 +72,7 @@ class LinkedList {
       this.head = this.head.next; // if its the first element, just set the head to the next element
     } else {
       const previous = this.access(position - 1);
-      previous.next = previous.next.next;
+      previous.next = previous.next.next; // set the previous elements next pointer to be 2 elements along, effectively "snipping out" the deleted element
     }
 
     // decrement the length
