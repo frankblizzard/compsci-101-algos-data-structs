@@ -1,8 +1,7 @@
-// TODO: find vertex
-// TODO: Remove Vertex
-// TODO: Remove Edge
+import { remove } from "./helpers";
+
 class Graph {
-  vertices = [];
+  vertices = {};
 
   /**
    * Add a top level vertex to the graph.
@@ -10,24 +9,23 @@ class Graph {
    */
   addVertex(value) {
     const vertex = { value, edges: [] };
-    return this.vertices.push(vertex);
+    if (!this.vertices[value]) {
+      this.vertices[value] = vertex;
+    }
   }
 
   /**
-   * TODO: Remove a vertex from the graph.
+   * Remove a vertex from the graph.
    * @param {any} value
    */
   removeVertex(value) {
+    if (this.vertices[value]) {
+      delete this.vertices[value];
+    }
+
+    // Remove all edges pointing to the vertex
   }
 
-  /**
-   * Find a vertex in the graph.
-   * TODO: make more efficient
-   * @param {any} value
-   */
-  findVertexIndex(value) {
-    return this.vertices.findIndex((vertex) => vertex.value === value);
-  }
 
   /**
    * Add an edge to the graph
@@ -35,43 +33,38 @@ class Graph {
    * @param {any} endValue  - the value of the vertex to connect the start vertex to.
    */
   addEdge(startValue, endValue) {
-    // Find the index of each of the
-    const startIndex = this.findVertexIndex(startValue);
-    const endIndex = this.findVertexIndex(endValue);
+    // Find each of the vertices
+    const startVertex = this.vertices[startValue];
+    const endVertex = this.vertices[endValue];
 
-    const startVertex = this.vertices[startIndex];
-    const endVertex = this.vertices[endIndex];
-
-    if(!startVertex || !endVertex) {
+    // If one of them doesn't exist, throw an error.
+    if (!startVertex || !endVertex) {
       throw new Error("Both vertices must exist before connecting them with an edge.");
     }
 
-    startVertex.edges.push(endVertex);
-    endVertex.edges.push(startVertex);
+    startVertex.edges.push(endVertex.value);
+    endVertex.edges.push(startVertex.value);
   }
 
   /**
-   * TODO: Make more efficient
    * Remove an edge from the graph
    * @param {any} startValue - the value of the first vertex in the edge
-   * @param {any} endValue  - the value of the vertex to connect the start vertex to.
+   * @param {any} endValue  - the end vertex of the edge you want to remove.
    */
   removeEdge(startValue, endValue) {
-    // Find the index of each of the
-    const startIndex = this.findVertexIndex(startValue);
-    const endIndex = this.findVertexIndex(endValue);
+    // Find each of the vertices
+    const startVertex = this.vertices[startValue];
+    const endVertex = this.vertices[endValue];
 
-    // Bitwise operator to shift bits and coerce boolean
-    if(!~startIndex || !~endIndex) {
-      throw new Error("Both vertices must exist before removing their edges.");
+    // If one of them doesn't exist, throw an error.
+    if (!startVertex || !endVertex) {
+      throw new Error("Both vertices must exist before removing any edges.");
     }
-    // get element
-    // find the edge of the first one
-    // remove it
-    // find the edges
 
-    // this.vertices[startIndex].edges.splice(, 1);
-    // this.vertices[endIndex].edges.splice(endIndex, 1);
+    // Remove the end edge from the start vertex
+    remove(endValue, startVertex.edges);
+    // Remove the start edge from the end vertex
+    remove(startValue, endVertex.edges);
   }
 }
 

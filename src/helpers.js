@@ -17,9 +17,17 @@ const swap = (idx1, idx2, arr) => {
   arr[idx2] = temp;
 }
 
+const remove = (value, arr) => {
+  const idx = arr.indexOf(value);
+  if (!~idx) {
+    throw new Error(`Item ${value} does not exist in array - ${arr}`);
+  }
+  arr.splice(idx, 1);
+}
+
 function shiftElementRight(idx, arr) {
   arr[idx + 1] = arr[idx];
 }
 
 
-export { compose, median, swap, shiftElementRight };
+export { compose, median, swap, shiftElementRight, remove };
