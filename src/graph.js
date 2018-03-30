@@ -24,6 +24,13 @@ class Graph {
     }
 
     // Remove all edges pointing to the vertex
+    Object.values(this.vertices).forEach((vertex) => {
+      vertex.edges.forEach((edgeValue) => {
+        if (edgeValue === value) {
+          remove(edgeValue, vertex.edges);
+        }
+      })
+    });
   }
 
 

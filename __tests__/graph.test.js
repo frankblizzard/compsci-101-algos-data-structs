@@ -15,12 +15,22 @@ describe("Graph Tests ", () => {
     expect(graph.vertices[value].value).toEqual(value);
   });
 
-  it("Should remove a vertex to the graph", () => {
+  it("Should remove a vertex from the graph", () => {
     const value = 2;
     graph.addVertex(value);
 
     graph.removeVertex(value);
     expect(graph.vertices[value]).toBeUndefined();
+  });
+
+  it("Should remove a vertex from the graph with edges - it should be removed from the entire graph", () => {
+    const value = 2;
+    graph.addVertex(value);
+    graph.addVertex(3);
+
+    graph.addEdge(2,3);
+    graph.removeVertex(value);
+    expect(graph.vertices["3"].edges).toHaveLength(0);
   });
 
   it("Should add an edge to the graph, connecting 2 vertices", () => {
