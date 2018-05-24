@@ -1,6 +1,3 @@
-const compose = (...fns) => val =>
-  fns.reverse().reduce((prevFn, nextFn) => nextFn(prevFn(val)), val => val);
-
 const median = values => {
   const half = Math.floor(values.length / 2);
 
@@ -30,4 +27,4 @@ function shiftElementRight(idx, arr) {
 }
 
 
-export { compose, median, swap, shiftElementRight, remove };
+export { median, swap, shiftElementRight, remove };

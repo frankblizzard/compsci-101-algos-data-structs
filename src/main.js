@@ -5,6 +5,7 @@ import Stack from "./stack";
 import HashTable from "./hashTable";
 import Graph from "./graph";
 import Tree from "./tree";
+import BinarySearchTree from "./binarySearchTree";
 
 export default {
   UnorderedArray,
@@ -13,5 +14,6 @@ export default {
   Stack,
   HashTable,
   Tree,
-  Graph
+  Graph,
+  BinarySearchTree
 };

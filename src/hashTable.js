@@ -4,11 +4,10 @@
 class HashTable {
   memory = [];
 
-  // TODO: Comment with full functionality
+  // Simple hashing algorithm. Would never be used in a real world scenario.
   hash(key) {
     let hash = 0;
     for (let index = 0; index < key.length; index++) {
-      // Oh look– magic.
       let code = key.charCodeAt(index);
       hash = ((hash << 5) - hash) + code | 0;
     }
