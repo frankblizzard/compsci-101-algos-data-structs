@@ -1,14 +1,14 @@
-function unorderedArray() {
-  return {
-    memory: [],
-    length: 0,
-    computations: 0,
+class UnorderedArray {
+    memory = [];
+    length = 0;
+    computations = 0;
+
     // O(1)
     insertion(element) {
       this.memory[this.length] = element;
       this.length++;
       this.computations++;
-    },
+    }
 
     // O(N)
     deletion(deletionTarget) {
@@ -21,7 +21,7 @@ function unorderedArray() {
         }
       }
       return -1;
-    },
+    }
 
     // O(N)
     linearSearch(target) {
@@ -33,11 +33,10 @@ function unorderedArray() {
       }
 
       return -1;
-    },
+    }
 
     // O(1)
-    access(address) { return this.memory[address] },
-  };
+    access(address) { return this.memory[address] }
 }
 
-export default unorderedArray;
+export default UnorderedArray;
