@@ -1,8 +1,7 @@
-function orderedArray() {
-  return {
-    memory: [],
-    length: 0,
-    computations: 0,
+class OrderedArray {
+    memory =  [];
+    length = 0;
+    computations = 0;
 
     // O(N)
     insertion(value) {
@@ -20,7 +19,8 @@ function orderedArray() {
       // to it.
       this.length++;
       this.memory[i + 1] = value;
-    },
+    }
+
     // O(log N)
     binarySearch(target, values = this.memory) {
       const middle = Math.floor(values.length / 2);
@@ -40,7 +40,7 @@ function orderedArray() {
         return -1;
       }
     }
-  };
-}
 
-export default orderedArray;
+};
+
+export default OrderedArray;
